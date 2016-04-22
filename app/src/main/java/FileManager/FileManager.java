@@ -11,12 +11,20 @@ import java.io.File;
  */
 
 public class FileManager {
+
+    public static boolean isAvailable(String state) {
+        if (Environment.MEDIA_MOUNTED.equals(state) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
     private static File getAvailableRoot(File file) {
         if (file == null)
             return null;
 
         File root = file;
-        while (Environment.getStorageState(root.getParentFile()).equals(Environment.MEDIA_MOUNTED))
+        while (isAvailable(Environment.getStorageState(root.getParentFile())))
             root = root.getParentFile();
 
         return root;
