@@ -25,7 +25,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < files.length; ++i)
             txtExternalStorageList.append(String.format("%d. %s\n", i+1, files[i].getAbsolutePath()));
 
-        txtExternalStorageList.append("\nExternal SDCard Storage:\n" + FileManager.getExternalSDCard(getApplicationContext()).getAbsolutePath());
+        txtExternalStorageList.append("\nExternal SDCard Storage:\n");
+        File externalSDCard = FileManager.getExternalSDCard(getApplicationContext());
+        if (externalSDCard != null) {
+            txtExternalStorageList.append(externalSDCard.getAbsolutePath());
+        } else {
+            txtExternalStorageList.append("  not available on this device");
+        }
+
 
         Toast.makeText(this, "Completed!", Toast.LENGTH_SHORT).show();
     }
