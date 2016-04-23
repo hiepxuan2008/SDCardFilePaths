@@ -1,7 +1,8 @@
 SDCardFilePaths
 ===============
 
-Features:
+Features
+-----
 * Get all available SDCard file paths in your device
 * Get External SDCard File path (Removable Storage) in your device
 
@@ -10,8 +11,8 @@ Features:
 Usage
 -----
 ```
-File sdcards[] = getAllAvailableSDCards(getApplicationContext());
-File externalSdCard = getExternalSDCard(getApplicationContext());
+File sdcards[] = FileManager.getAllAvailableSDCards(getApplicationContext());
+File externalSdCard = FileManager.getExternalSDCard(getApplicationContext());
 ```
 
 Limitation
